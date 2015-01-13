@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+				$("#b1").click(function()
+				{
+				/*	$("#circle").animate({height:"3000px",width:"3000px"}, {speed:5000});
+					$("#circle").animate({width:"300px",height:"300px"},{speed:5000});*/
+					$("#circle").slideUp(1000, "linear", down );/*
+						function()
+						{ this.slideUp(2000);}
+						);*/
+				});
+		});
+		function down()
+		{
+			$(this).slideDown(1000, up).fadeToggle();
+		}
+		function up()
+		{
+			$(this).fadeToggle().slideUp(1000, down);
+		}
+
+		</script>
+	</head>
+	<body>
+		<div id="box" style="background:#FF0000; width:10px; height:10px; margin:8px;border-radius:25%"></div>
+		<div id="circle" style="background:#00ff00; width:50px; height:50px; margin:7px;border-radius:50%"></div>
+		<input type="button" id="b1" value="Animate" ></input>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+					$("p").click(function(){
+					//$(this).hide();
+					if (this.className === "")
+						$(this).addClass("clazz");
+					else
+						$(this).removeClass("clazz");
+					});
+				/*	$("input").click(function(){
+						alert("Button clicked is " + this.id );
+					});
+					$(".clazz").click(function(){*/
+					$("#b1, #b3").click(function(){
+							//alert("Button with class clicked is " + this.id );
+							//$("#a3,#a2,#a1").addClass("clazz");
+							var fv = $(this).attr("changep") ;//.addClass("clazz");
+							if (fv !== "")
+							{
+								fv = "#" + fv;
+								$(fv).addClass("clazz");
+								$(fv).append("Append");
+								$(fv).before("  Before  ");
+								$(fv).after("   After   ");
+								$(fv).css("background-color", "yellow");
+							}
+					});
+					$("#b2").click(function(){
+							var fv = $(this).attr("changep") ;//.addClass("clazz");
+							if (fv !== "")
+							{
+								fv = "#" + fv;
+								$(fv).empty();
+								$(fv).remove();
+							}
+					});
+					$("#b4").click(function(){
+						var fv = $("#a1");
+						$("#a4")[0].innerText += "\nWH=" + fv.width() + " "+ fv.height() + "\tInner " + fv.innerWidth()+ " " + fv.innerHeight() +  "\tOuter " + fv.outerWidth() + " " + fv.outerHeight();
+						$("#a5").append("\t" + fv.parents().length);
+						$("#a5").append("\t" + fv.parentsUntil("html").length);
+						$("#a1").parentsUntil("html").css({"color":"red","border":"2px"});
+						$("#a1").append("  my siblings" + $("#a3").siblings().length);
+					});
+
+
+			/*		$("#a1").click(function(){
+							alert("Para clicked is " + this.id  + "\n" + this.className);
+					});*/
+			});
+	</script>
+	<style >
+	.clazz
+	{
+		color:blue;
+		font-size:xx-large;
+		font-weight:bold;
+		padding:13px;
+	}
+	</style>
+	</head>
+	<body>
+		<p id="a1"   >One </p>
+		<p id="a2"   >Two </p>
+		<p id="a3"   >Three </p>
+		<input type="button" id="b1" value="Append After"  class="clazz"  changep="a1" />
+		<input type="button" id="b2" value="Remove " class="clazz"  changep="a2" />
+		<input type="button" id="b3" value="Three"  class="clazz"  changep="a1,#a2,#a3" />
+		<input type="button" id="b4" value="Size" />
+		<div>
+		<p id="a4" />
+		<p id="a5" >Para5</p>
+		</div>
+	</body>
+</html>
